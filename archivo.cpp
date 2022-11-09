@@ -22,9 +22,10 @@ int menu() {
 }
 
 int main() {
-    int x = 0;
-    do {
-        x = menu();
+    //int x = 0;
+    int x = menu();
+    if(x >=1 && x <= 6) {
+        //x = menu();
 
         switch(x) {
             case 1:
@@ -46,6 +47,9 @@ int main() {
                 //salir();
                 break;
         }
-    } while(x != 6);
+    } else {
+        cout << "Error! Ingrese un numero entre 1 y 6" << endl;
+        main();
+    }
     return 0;
 }

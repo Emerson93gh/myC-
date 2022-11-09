@@ -31,7 +31,7 @@ Persona getPersona(long dui) {
 
     if(e.is_open()) {
         e.seekg((dui-1) * sizeof(Persona));
-        e.read((char*) &aux, sizeof(Persona));
+        e.read((char*)&aux, sizeof(Persona));
         e.close();
     }
     return aux;
