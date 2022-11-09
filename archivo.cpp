@@ -1,19 +1,14 @@
 #include <iostream>
+#include <ostream>
 #include <fstream>
 #include <iomanip>
 #include <cstdlib>
 #include <cstring>
-#include "funciones"
+#include "funciones.h"
 
 using namespace std;
 
-struc Persona {
-    char nombre[45] = "";
-    char apellido[45] = "";
-    long dui = 0;
-};
-
-int menu () {
+int menu() {
     int x = 0;
     cout << "1. Agregar" << endl;
     cout << "2. Listar" << endl;
@@ -22,32 +17,8 @@ int menu () {
     cout << "5. Modificar" << endl;
     cout << "6. Salir" << endl;
     cout << "Ingresar opcion: ";
-    cout >> x;
+    cin >> x;
     return x;
-}
-
-long getLong(string mjs) {
-    long m;
-    cout << mjs << endl;
-    cin >> m;
-    return m;
-}
-string getString(string mjs) {
-    string m;
-    cout << mjs << endl;
-    getline(cin, m);
-    return m;
-}
-Persona getPersona(long dui) {
-    fstream e("archivo.txt", ios::out | ios::in | ios::binary);
-    Persona aux;
-
-    if(e.is_open()) {
-        e.seekg((dui-1) * sizeof(Persona));
-        e.read((char*) &aux, sizeof(Persona));
-        e.close();
-    }
-    return aux;
 }
 
 int main() {
@@ -60,19 +31,19 @@ int main() {
                 agregarRegistro();
                 break;
             case 2:
-                listarRegistro();
+                //listarRegistro();
                 break;
             case 3:
-                buscarRegistro();
+                //buscarRegistro();
                 break;
             case 4:
-                eliminarRegistro();
+                //eliminarRegistro();
                 break;
             case 5:
-                modificarRegistro();
+                //modificarRegistro();
                 break;
             case 6:
-                salir();
+                //salir();
                 break;
         }
     } while(x != 6);
