@@ -32,7 +32,7 @@ int main() {
                 agregarRegistro();
                 break;
             case 2:
-                //listarRegistro();
+                listarRegistro();
                 break;
             case 3:
                 //buscarRegistro();

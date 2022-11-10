@@ -62,3 +62,26 @@ void agregarRegistro(){
         }
     }
 }
+// metodo para mostrar persona
+void mostrar(Persona p) {
+    cout << "Nombre: " << p.nombre << endl;
+    cout << "Apellido: " << p.apellido << endl;
+    cout << "# DUI: " << p.dui << endl;
+    cout << "___________________________________" << endl;
+}
+
+// funcion para listar registros
+void listarRegistro() {
+    fstream e("archivo.txt", ios::out | ios::in | ios::binary);
+    Persona aux;
+
+    if(e.is_open()) {
+        e.read((char*)&aux, sizeof(Persona));
+        while(!e.eof()) {
+            if(aux.dui != 0)
+                mostrar(aux);
+            e.read((char*)&aux, sizeof(Persona));
+        }
+        e.close();
+    }
+}
