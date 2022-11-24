@@ -85,3 +85,57 @@ void listarRegistro() {
         e.close();
     }
 }
+
+// funcion para buscar registros
+void buscarRegistro() {
+    int long dui = getLong("Digite el numero de DUI: ");
+    Persona aux = getPersona(dui);
+    if(aux.dui == 0) {
+        cout << "No existe el registro!" << endl;
+    } else {
+        mostrar(aux);
+    }
+}
+
+// funcion para eliminar registro
+void eliminar(int long dui) {
+    fstream e("archivo.txt", ios::out | ios::in | ios::binary);
+    Persona aux;
+    if(e.is_open()) {
+            e.seekp((dui-1) * sizeof(Persona)); //cambia a seekp
+            e.write((char*) &aux, sizeof(Persona));
+            e.close();
+        }
+}
+void eliminarRegistro() {
+    int long dui = getLong("Digite el numero de DUI: ");
+    Persona aux = getPersona(dui);
+    if(aux.dui == 0) {
+        cout << "No existe el registro!" << endl;
+    } else {
+        cout << "Registro eliminado!" << endl;
+        eliminar(aux.dui);
+    }
+}
+
+// funcion para modificar registros
+void modificarRegistro() {
+    int long dui = getLong("Digite el numero de DUI: ");
+    Persona aux = getPersona(dui);
+    cin.ignore();
+    if(aux.dui == 0) {
+        cout << "No existe el registro!" << endl;
+    } else {
+        mostrar(aux);
+        strcpy(aux.nombre, getString("Ingresar Nombre: ").c_str());
+        strcpy(aux.apellido, getString("Ingresar Apellido: ").c_str());
+        
+        fstream e("archivo.txt", ios::out | ios::in | ios::binary);
+
+        if(e.is_open()) {
+            e.seekp((aux.dui-1) * sizeof(Persona)); //cambia a seekp
+            e.write((char*) &aux, sizeof(Persona));
+            e.close();
+        }
+    }
+}

@@ -35,13 +35,13 @@ int main() {
                 listarRegistro();
                 break;
             case 3:
-                //buscarRegistro();
+                buscarRegistro();
                 break;
             case 4:
-                //eliminarRegistro();
+                eliminarRegistro();
                 break;
             case 5:
-                //modificarRegistro();
+                modificarRegistro();
                 break;
             case 6:
                 //salir();
